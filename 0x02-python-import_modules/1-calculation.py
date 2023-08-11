@@ -13,5 +13,3 @@ if __name__ == "__main__":
     print(f"10 * 5 = {a}")
     a = div(10, 5)
     print(f"10 / 5 = {a}")
-    a = mul(10, 5)
-    print(f"10 - 5 = {a}")
