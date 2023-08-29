@@ -1,10 +1,35 @@
 #!/usr/bin/python3
+
+"""Square module
+
+    A module containing a class called Square representing a square shape.
+"""
+
+
 class Square:
-    """A square class"""
+    """A square class
+
+        A class that defines a square by size.
+
+        Attributes:
+            __size (int): size of the square.
+    """
 
     __size = 3
 
     def __init__(self, size=0):
+        """Initialize class with size variable
+
+        Args:
+            size (int): size of the square
+
+        Returns:
+            None
+
+        Raises:
+            TypeError: if size is not an integer
+            ValueError: if size is less than 0
+        """
         if type(size) is not int:
             raise TypeError("size must be an integer")
         elif size < 0:
@@ -14,10 +39,30 @@ class Square:
 
     @property
     def size(self):
+        """Get the size of the square
+
+            Args:
+                None
+
+            Returns:
+                The size of the square
+        """
         return self.__size
 
     @size.setter
     def size(self, value):
+        """Set the size of the square
+
+            Args:
+                value (int): New size of the square
+
+            Returns:
+                None
+
+            Raises:
+                TypeError: if the `size` is not an integer
+                ValueError: if the `size` is less than 0
+        """
         if type(value) is not int:
             raise TypeError("size must be an integer")
         elif value < 0:
@@ -26,9 +71,28 @@ class Square:
             self.__size = value
 
     def area(self):
+        """Get the area of the square
+
+            Args:
+                None
+
+            Returns:
+                The area of the square
+
+            Raises:
+                None
+        """
         return self.__size ** 2
 
     def my_print(self):
+        """Print the square to stdout using the `#` character
+
+            Args:
+                None
+
+            Returns:
+                None
+        """
         if self.__size == 0:
             print()
         else:
