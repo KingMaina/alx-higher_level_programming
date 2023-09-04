@@ -5,6 +5,7 @@ import sys
 """ Module of chess queen problem
 """
 
+
 def nqueens(n):
     """Program that solves the N queens problem
 
@@ -26,6 +27,7 @@ def nqueens(n):
     except Exception as e:
         print(e)
         sys.exit(1)
+
 
 if __name__ == "__main__":
     nqueens(sys.argv)

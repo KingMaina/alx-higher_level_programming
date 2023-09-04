@@ -30,7 +30,7 @@ class Square:
             None
 
         Raises:
-            TypeError: if size is not an integer
+            TypeError: if size is not an integer or if position is not a tuple
             ValueError: if size is less than 0
         """
         x, y = position
