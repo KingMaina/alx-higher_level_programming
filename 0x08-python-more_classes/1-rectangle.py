@@ -3,13 +3,8 @@
 class Rectangle:
     """A rectangle class
 
-        Attributes:
-            __width (int): width of the rectangle
-            __height (int): height of the rectangle
     """
 
-    __height = 0
-    __width = 0
 
     def __init__(self, width=0, height=0):
         """Initialize class
