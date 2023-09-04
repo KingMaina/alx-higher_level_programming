@@ -1,5 +1,10 @@
 #!/usr/bin/python3
 
+""" Module of a rectangle class
+
+A rectangle class with attributes width and height
+"""
+
 class Rectangle:
     """A rectangle class
 

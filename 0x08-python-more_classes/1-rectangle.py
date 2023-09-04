@@ -1,10 +1,18 @@
 #!/usr/bin/python3
 
+""" Module of a rectangle class
+
+A rectangle class with attributes width and height
+"""
+
+
 class Rectangle:
     """A rectangle class
 
     """
 
+    __height = 0
+    __width = 0
 
     def __init__(self, width=0, height=0):
         """Initialize class
