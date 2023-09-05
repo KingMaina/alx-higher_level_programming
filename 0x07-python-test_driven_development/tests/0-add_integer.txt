@@ -1,0 +1,73 @@
+=====================================
+Test cases for `0-add_integer` module
+=====================================
+
+# Import the module
+>>> add_integer = __import__('0-add_integer').add_integer
+
+
+==========
+TEST CASES
+==========
+
+1. positive integers
+>>> add_integer(4, 7)
+11
+
+2. `a` is negative
+>>> add_integer(-5, 13)
+8
+
+3. One argument only
+>>> add_integer(10)
+108
+
+4. No arguments
+>>> add_integer()
+Traceback (most recent call last):
+...
+TypeError: add_integer() missing 1 required positional argument: 'a'
+
+5. `a` is a float
+>>> add_integer(356.87, 5)
+361
+
+6. `b` is a float
+>>> add_integer(43, 2.555)
+45
+
+7. `a` is None
+>>> add_integer(None, 3)
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+
+8. `a` is infinity
+>>> add_integer(1e456, 1)
+Traceback (most recent call last):
+...
+ValueError: a cannot be infinifty
+
+9. `a` is a string
+>>> add_integer("32", 5)
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+
+10. `b` is a list
+>>> add_integer(-2, [4])
+Traceback (most recent call last):
+...
+TypeError: b must be an integer
+
+11. `a` is a list
+>>> add_integer([7, 6], None)
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+
+12. `a` is a string
+>>> add_integer("Five", 10)
+Traceback (most recent call last):
+...
+TypeError: a must be an integer

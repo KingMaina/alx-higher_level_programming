@@ -1,0 +1,127 @@
+=====================================
+Test cases for `0-add_integer` module
+=====================================
+
+# Import the module
+>>> print_square = __import__('4-print_square').print_square
+
+==========
+TEST CASES
+==========
+
+=====================================>
+# Test case: integer argument
+>>> print_square(4)
+####
+####
+####
+####
+
+=====================================>
+# Test case: float argument
+>>> print_square(4.0)
+####
+####
+####
+####
+
+=====================================>
+# Test case: size is a float and is less than 0
+>>> print_square(-4.0)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+=====================================>
+# Test case: negative argument
+>>> print_square(-4)
+Traceback (most recent call last):
+...
+ValueError: size must be >= 0
+
+=====================================>
+# Test case: non-integer argument
+>>> print_square("Fifty")
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+
+=====================================>
+# Test case: No parameters
+>>> print_square()
+Traceback (most recent call last):
+...
+TypeError: print_square() missing 1 required positional argument: 'size'
+
+=====================================>
+# Test case: more than one argument
+>>> print_square(4, 5)
+Traceback (most recent call last):
+...
+TypeError: print_square() takes 1 positional argument but 2 were given
+
+=====================================>
+# Test case: size is None
+>>> print_square(None)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+=====================================>
+# Test case: size is a list
+>>> print_square([1, 2, 3])
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+=====================================>
+# Test case: size is a tuple
+>>> print_square((1, 2, 3))
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+=====================================>
+# Test case: size is a dictionary
+>>> print_square({'a': 1, 'b': 2, 'c': 3})
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+=====================================>
+# Test case: size is a set
+>>> print_square({1, 2, 3})
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+=====================================>
+# Test case: size is a boolean
+>>> print_square(True)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+=====================================>
+# Test case: size is a function
+>>> def my_func():
+...     print("Hello World")
+>>> print_square(my_func)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+=====================================>
+# Test case: size is infinity
+>>> print_square(float('inf'))
+Traceback (most recent call last):
+...
+OverflowError: cannot convert float infinity to integer
+
+=====================================>
+# Test case: size is -infinity
+>>> print_square(float('-inf'))
+Traceback (most recent call last):
+...
+TypeError: size must be an integer

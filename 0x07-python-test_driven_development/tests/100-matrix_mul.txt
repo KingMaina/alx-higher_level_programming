@@ -1,0 +1,114 @@
+=====================================
+Test cases for `100-matrix_mul` module
+=====================================
+
+# Import the module
+>>> matrix_mul = __import__('100-matrix_mul').matrix_mul
+
+==========
+TEST CASES
+==========
+
+=====================================>
+# Test case: Multiply two matrices
+>>> matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
+[[7, 10], [15, 22]]
+
+=====================================>
+# Test case: m_a is empty
+>>> matrix_mul([], [[3, 5], [6,7]])
+Traceback (most recent call last):
+...
+ValueError: m_a can't be empty
+
+=====================================>
+# Test case: m_b is empty
+>>> matrix_mul([[1, 2], [3, 4]], [])
+Traceback (most recent call last):
+...
+ValueError: m_b can't be empty
+
+=====================================>
+# Test case: Multiply two matrices with different sizes but compatible
+>>> matrix_mul([[1, 2], [3, 4]], [[1, 2, 3], [4, 5, 6]])
+[[9, 12, 15], [19, 26, 33]]
+
+=====================================>
+# Test case: m_a contains an empty list inside
+>>> matrix_mul([[]], [[1, 2], [3, 4]])
+Traceback (most recent call last):
+...
+ValueError: m_a can't be empty
+
+=====================================>
+# Test case: m_b contains an empty list inside
+>>> matrix_mul([[1, 2], [3, 4]], [[]])
+Traceback (most recent call last):
+...
+ValueError: m_b can't be empty
+
+=====================================>
+# Test case: m_a contains a non list element
+>>> matrix_mul([[1, 2], [3, 4], 5], [[1, 2], [3, 4]])
+Traceback (most recent call last):
+...
+TypeError: m_a must be a list of lists
+
+=====================================>
+# Test case: m_b contains a non list element
+>>> matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4], 5])
+Traceback (most recent call last):
+...
+TypeError: m_b must be a list of lists
+
+=====================================>
+# Test case: m_a contains a non int/float element
+>>> matrix_mul([[1, 2], [3, 4], [5, 'a']], [[1, 2], [3, 4]])
+Traceback (most recent call last):
+...
+TypeError: m_a should contain only integers or floats
+
+=====================================>
+# Test case: m_b contains a non int/float element
+>>> matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4], ['a', 5]])
+Traceback (most recent call last):
+...
+TypeError: m_b should contain only integers or floats
+
+=====================================>
+# Test case: m_a contains a list with a float element
+>>> matrix_mul([[1, 2], [3, 4], [5, 5.5]], [[1, 2], [3, 4]])
+[[7, 10], [15, 22], [21.5, 32.0]]
+
+=====================================>
+# Test case: m_b contains a list with a float element
+>>> matrix_mul([[1, 2], [3, 4]], [[1, 2], [5.5, 5]])
+[[12.0, 12], [25.0, 26]]
+
+=====================================>
+# Test case: m_b is incompatible for multiplication
+>>> matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4], [5, 6]])
+Traceback (most recent call last):
+...
+ValueError: m_a and m_b can't be multiplied
+
+=====================================>
+# Test case: m_a is incompatible for multiplication
+>>> matrix_mul([[1, 2], [3, 4], [5, 6]], [[1, 2], [3, 4], [5, 6]])
+Traceback (most recent call last):
+...
+ValueError: m_a and m_b can't be multiplied
+
+=====================================>
+# Test case: m_a is None
+>>> matrix_mul(None, [[1, 2], [3, 4]])
+Traceback (most recent call last):
+...
+TypeError: m_a must be a list
+
+=====================================>
+# Test case: m_b is None
+>>> matrix_mul([[1, 2], [3, 4]], None)
+Traceback (most recent call last):
+...
+TypeError: m_b must be a list

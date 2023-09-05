@@ -1,0 +1,78 @@
+=====================================
+Test cases for `0-add_integer` module
+=====================================
+
+# Import the module
+>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+==========
+TEST CASES
+==========
+
+====================
+1. POSITIVE INTEGERS 
+====================
+
+------------------------------------->
+# Test case: Divide a 2D, integer filled matrix by a positive integer
+>>> matrix_divided([[1], [5], [9]], 5)
+[[0.2], [1.0], [1.8]]
+
+------------------------------------->
+# Test case: Divide a 2D, integer filled matrix by zero.
+>>> matrix_divided([[1], [5], [9]], 0)
+Traceback (most recent call last):
+...
+ZeroDivisionError: division by zero
+
+------------------------------------->
+# Test case: Divide a 2D, integer filled matrix by infinity.
+
+>>> matrix_divided([[1], [5], [9]], 1e999)
+Traceback (most recent call last):
+...
+ValueError: division by infinity
+
+------------------------------------->
+# Test case: Divide a 2D, integer filled matrix by -infinity.
+>>> matrix_divided([[1], [5], [9]], -1e999)
+Traceback (most recent call last):
+...
+ValueError: division by infinity
+
+------------------------------------->
+# Test case: Divide a 2D, integer filled matrix by a non-integer and non-float
+>>> matrix_divided([[1], [5], [9]], "5")
+Traceback (most recent call last):
+...
+TypeError: div must be a number
+
+------------------------------------->
+# Test case: Divide a 2D, integer filled matrix with uneven row sizes by a positive integer
+>>> matrix_divided([[1],[5, 10],[9, 20, 40]], 5)
+Traceback (most recent call last):
+...
+TypeError: Each row of the matrix must have the same size
+
+------------------------------------->
+# Repeat for a floating filled 2d matrix
+>>> matrix_divided([[35.654, 23.34, 5]], 5)
+[[7.13, 4.67, 1.0]]
+
+------------------------------------->
+# Repeat for an empty matrix
+>>> matrix_divided([[]], 4)
+Traceback (most recent call last):
+...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+# Repeat for a matrix filled with mixed data types
+# Repeat for a 1D matrix
+# Repeat for a 1D matrix filled with mixed types
+
+# Test case: Divide a 1 Dimension, integer filled matrix by
+# Test case: Divide an empty matrix by a positive integer
+# Test case: Divide an integer filled matrix by a negative integer
+# Test case: Divide the matrix containing float numbers 
+# Test case: Divide an float filled matrix by zero.
+# Test case: Divide a matrix with mixed types by a positive integer
