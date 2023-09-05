@@ -66,6 +66,19 @@ Traceback (most recent call last):
 ...
 TypeError: matrix must be a matrix (list of lists) of integers/floats
 
+=====================================>
+# div is None
+>>> matrix_divided([[1], [5], [9]], None)
+Traceback (most recent call last):
+...
+TypeError: div must be a number
+
+=====================================>
+# div is a float
+>>> matrix_divided([[1], [5], [9]], 5.0)
+[[0.2], [1.0], [1.8]]
+
+
 # Repeat for a matrix filled with mixed data types
 # Repeat for a 1D matrix
 # Repeat for a 1D matrix filled with mixed types

@@ -35,13 +35,10 @@ def matrix_divided(matrix, div):
             """
                 matrix must be a matrix (list of lists) of integers/floats
             """)
-    matrix_copy = matrix.copy()
-    matrix_len = len(matrix_copy)
-    if matrix_len <= 0:
+    if matrix == [] or matrix == [[]]:
         raise TypeError(
-            """
-                matrix must be a matrix (list of lists) of integers/floats
-            """)
+            "matrix must be a matrix (list of lists) of integers/floats"
+            )
     row_sizes = []
     for row in matrix:
         if type(row) is not list:

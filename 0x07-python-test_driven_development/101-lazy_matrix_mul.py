@@ -1,9 +1,11 @@
 #!/usr/bin/python3
 
-""" Matrix multiplication module"""
+import numpy as np
+
+""" Matrix multiplication module using NumPy"""
 
 
-def matrix_mul(m_a, m_b):
+def lazy_matrix_mul(m_a, m_b):
     """Multiply two matrices
 
         Args:
@@ -60,11 +62,5 @@ def matrix_mul(m_a, m_b):
             raise TypeError("each row of m_b must be of the same size")
     if len(m_a[0]) != len(m_b):
         raise ValueError("m_a and m_b can't be multiplied")
-    new_matrix = []
-    for row in range(len(m_a)):
-        new_matrix.append([])
-        for column in range(len(m_b[0])):
-            new_matrix[row].append(0)
-            for index in range(len(m_b)):
-                new_matrix[row][column] += m_a[row][index] * m_b[index][column]
+    new_matrix = np.matmul(m_a, m_b)
     return new_matrix
