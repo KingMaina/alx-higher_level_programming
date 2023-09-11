@@ -10,9 +10,8 @@ class Square(Rectangle):
 
     def __init__(self, size):
         """Initializes a square class"""
-        if self.integer_validator("size", size) is None:
-            self.__size = size
-        Rectangle.__init__(self)
+        self.integer_validator("size", size)
+        self.__size = size
 
     def area(self):
         """Calculates the area of the square"""

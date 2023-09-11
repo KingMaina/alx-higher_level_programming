@@ -2,6 +2,7 @@
 
 """Module with a custom class that inherits from int class"""
 
+
 class MyInt(int):
     """A subclass of int"""
 
