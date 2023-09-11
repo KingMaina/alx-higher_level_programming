@@ -14,29 +14,11 @@ class Rectangle(BaseGeometry):
             self.__width = width
         if self.integer_validator("height", height) is None:
             self.__height = height
+        BaseGeometry.__init__(self)
 
     def area(self):
         """Calculates the area of the shape"""
         return self.__width * self.__height
-
-    def integer_validator(self, name, value):
-        """Validates an integer
-
-            Args:
-                name (str): Name representing the integer
-                value (int): Integer to be validated
-
-            Returns:
-                None
-
-            Raises:
-                TypeError: <name> must be an integer
-                ValueError: <name> must be greater than 0
-        """
-        if type(value) is not int:
-            raise TypeError("{} must be an integer".format(name))
-        if value <= 0:
-            raise ValueError("{} must be greater than 0".format(name))
 
     def __str__(self):
         """Defines the string representation of the rectangle class
@@ -47,6 +29,4 @@ class Rectangle(BaseGeometry):
             Returns:
                 The string representation of the class
         """
-        return "[{}] {}/{}".format(type(self).__name__,
-                                   self.__width,
-                                   self.__height)
+        return "[Rectangle] {}/{}".format(self.__width, self.__height)
