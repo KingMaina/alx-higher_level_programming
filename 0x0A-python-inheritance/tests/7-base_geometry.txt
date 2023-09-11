@@ -1,0 +1,48 @@
+# Tests for the module 7-base_geometry
+
+* The class contains methods to calculate area and validate an integer
+
+## Constraints
+
+* 
+
+===========
+## TESTS
+===========
+
+=====================>
+Import the class
+>>> BaseGeometry= __import__('7-base_geometry').BaseGeometry
+
+=====================>
+### Create a BaseGeometry object
+
+>>> shape = BaseGeometry()
+
+=====================>
+### Call method `area`
+
+>>> shape.area()
+Traceback (most recent call last):
+...
+Exception: area() is not implemented
+
+=====================>
+### Call method `integer_validator` with an integer > 0
+
+shape.integer_validator("age", 70)
+
+=====================>
+### Call method `integer_validator` with a negative integer
+
+>>> shape.integer_validator("age", -4)
+Traceback (most recent call last):
+...
+ValueError: age must be greater than 0
+
+=====================>
+### Call method `integer_validator` with a non-integer value
+>>> shape.integer_validator("age", "Fifth")
+Traceback (most recent call last):
+...
+TypeError: age must be an integer

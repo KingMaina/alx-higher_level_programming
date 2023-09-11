@@ -1,0 +1,47 @@
+# Tests for the module ../1-my_list.py
+
+* The function is expected to print an ascending sorted list of the elements
+
+## Constraints
+
+* print_sorted is a public instance method.
+* You can assume that all the elements of the list will be of type int.
+* The list is printed in ascending, sorted order.
+
+
+===========
+## TESTS
+===========
+
+=====================>
+Import the module
+>>> MyList = __import__('1-my_list').MyList
+
+=====================>
+### Create a list object
+
+>>> list1 = MyList()
+
+=====================>
+### Append an integer to the list
+
+>>> list1.append(4)
+
+=====================>
+### Append a non-integer to the list
+
+list1.append("Hello")
+Traceback (most recent call last):
+...
+TypeError: must be an integer
+
+=====================>
+### Append a negative integer to the list
+
+>>> list1.append(-15)
+
+=====================>
+### Print a sorted list
+
+>>> list1.print_sorted()
+[-15, 4]
