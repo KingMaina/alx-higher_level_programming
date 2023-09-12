@@ -22,3 +22,6 @@ class Student:
                 if hasattr(self, attribute):
                     new_dict[attribute] = getattr(self, attribute)
             return new_dict
+
+    def reload_from_json(self, json):
+        """Replaces all attributes of the object instance"""
