@@ -21,7 +21,7 @@ class TestRectangle(unittest.TestCase):
 
     def setUp(self):
         """Set up"""
-        pass
+        Base._Base__nb_objects = 0
 
     def tearDown(self):
         """Tear down"""
@@ -163,3 +163,51 @@ class TestRectangle(unittest.TestCase):
         """Test that to_dictionary method returns correct dictionary"""
         self.rect24 = Rectangle(5, 10, 3, 4, 99)
         self.assertEqual(self.rect24.to_dictionary(), {'x': 3, 'y': 4, 'id': 99, 'height': 10, 'width': 5})
+
+    def test_rectangle_create(self):
+        """Test that create returns the correct instance"""
+        self.new_rectangle_dict = {"id": 1, "width": 2, "height": 3,
+                                   "x": 4, "y": 5}
+        self.assertIsInstance(Rectangle.create(**self.new_rectangle_dict), Rectangle)
+
+    def test_rectangle_to_json_string(self):
+        """Test that to_json_string returns the correct JSON string"""
+        self.assertEqual(Rectangle.to_json_string(None), "[]")
+        self.assertEqual(Rectangle.to_json_string([]), "[]")
+        self.assertEqual(Rectangle.to_json_string([{"id": 1}]), '[{"id": 1}]')
+        self.assertEqual(Rectangle.to_json_string([{"id": 1}, {"id": 2}]),
+                         '[{"id": 1}, {"id": 2}]')
+
+    def test_rectangle_from_json_string(self):
+        """Test that from_json_string returns the correct list of instances"""
+        self.assertEqual(Rectangle.from_json_string(None), [])
+        self.assertEqual(Rectangle.from_json_string("[]"), [])
+        self.assertEqual(Rectangle.from_json_string('[{"id": 1}]'), [{"id": 1}])
+        self.assertEqual(Rectangle.from_json_string('[{"id": 1}, {"id": 2}]'),
+                         [{"id": 1}, {"id": 2}])
+
+    def test_rectangle_save_to_file(self):
+        """Test that save_to_file saves the correct JSON string to file"""
+        self.new_rectangle = Rectangle(2, 3)
+        self.new_rectangle2 = Rectangle(4, 5)
+        Rectangle.save_to_file([self.new_rectangle, self.new_rectangle2])
+        with open("Rectangle.json", "r") as file:
+            self.assertEqual(Rectangle.from_json_string(file.read()),
+                             [{"y": 0, "x": 0, "id": 1, "width": 2, "height": 3},
+                              {"y": 0, "x": 0, "id": 2, "width": 4, "height": 5}])
+
+    def test_rectangle_load_from_file(self):
+        """Test that load_from_file returns the correct list of instances"""
+        self.new_rectangle = Rectangle(2, 3)
+        self.new_rectangle2 = Rectangle(4, 5)
+        Rectangle.save_to_file([self.new_rectangle, self.new_rectangle2])
+        self.assertIsInstance(Rectangle.load_from_file()[0], Rectangle)
+        self.assertIsInstance(Rectangle.load_from_file()[1], Rectangle)
+        self.assertEqual(Rectangle.load_from_file()[0].__str__(), "[Rectangle] (1) 0/0 - 2/3")
+        self.assertEqual(Rectangle.load_from_file()[1].__str__(), "[Rectangle] (2) 0/0 - 4/5")
+
+    def test_rectangle_save_to_file_empty(self):
+        """Test that save_to_file saves the correct JSON string to file"""
+        Rectangle.save_to_file([])
+        with open("Rectangle.json", "r") as file:
+            self.assertEqual(Rectangle.from_json_string(file.read()), [])

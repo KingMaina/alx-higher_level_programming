@@ -19,6 +19,14 @@ class TestSquare(unittest.TestCase):
         """Tear down class"""
         pass
 
+    def setUp(self):
+        """Set up"""
+        Base._Base__nb_objects = 0
+
+    def tearDown(self):
+        """Tear down"""
+        pass
+
     def test_square__id(self):
         """Test that id is set correctly"""
         self.square1 = Square(5)
@@ -31,6 +39,8 @@ class TestSquare(unittest.TestCase):
     def test_square_nb_objects(self):
         """Test that nb_objects is set correctly"""
         self.square1 = Square(5)
+        self.square2 = Square(6)
+        self.square3 = Square(7)
         self.assertEqual(Base._Base__nb_objects, 3)
 
     def test_square_object_instance(self):
@@ -125,3 +135,51 @@ class TestSquare(unittest.TestCase):
         """Test that to_dictionary method returns correct dictionary"""
         self.square15 = Square(5, 3, 4, 50)
         self.assertEqual(self.square15.to_dictionary(), {'id': 50, 'size': 5, 'x': 3, 'y': 4})
+
+    def test_square_save_to_file(self):
+        """Test that save_to_file method saves to correct file"""
+        self.new_square = Square(2, 3, 4, 50)
+        self.new_square2 = Square(4, 5, 6, 60)
+        Square.save_to_file([self.new_square, self.new_square2])
+        self.assertIsInstance(Square.load_from_file()[0], Square)
+
+    def test_square_save_to_file_empty(self):
+        """Test that save_to_file method saves to correct file"""
+        Square.save_to_file([])
+        self.assertEqual(Square.load_from_file(), [])
+
+    def test_square_load_from_file(self):
+        """Test that load_from_file method returns correct list of instances"""
+        self.new_square = Square(2, 3, 4, 50)
+        self.new_square2 = Square(4, 5, 6, 60)
+        Square.save_to_file([self.new_square, self.new_square2])
+        self.assertIsInstance(Square.load_from_file()[0], Square)
+
+    def test_square_load_from_file_empty(self):
+        """Test that load_from_file method returns empty list"""
+        Square.save_to_file([])
+        self.assertEqual(Square.load_from_file(), [])
+
+
+
+    def test_square_to_json_string(self):
+        """Test that to_json_string returns the correct JSON string"""
+        self.assertEqual(Square.to_json_string(None), "[]")
+        self.assertEqual(Square.to_json_string([]), "[]")
+        self.assertEqual(Square.to_json_string([{"id": 1}]), '[{"id": 1}]')
+        self.assertEqual(Square.to_json_string([{"id": 1}, {"id": 2}]),
+                         '[{"id": 1}, {"id": 2}]')
+
+    def test_square_from_json_string(self):
+        """Test that from_json_string returns the correct list of instances"""
+        self.assertEqual(Square.from_json_string(None), [])
+        self.assertEqual(Square.from_json_string("[]"), [])
+        self.assertEqual(Square.from_json_string('[{"id": 1}]'), [{"id": 1}])
+        self.assertEqual(Square.from_json_string('[{"id": 1}, {"id": 2}]'),
+                         [{"id": 1}, {"id": 2}])
+
+    def test_square_create(self):
+        """Test that create returns the correct instance"""
+        self.new_square_dict = {"id": 1, "size": 2, "x": 3, "y": 4}
+        self.assertIsInstance(Square.create(**self.new_square_dict), Square)
+        self.assertEqual(Square.create(**self.new_square_dict).__str__(), "[Square] (1) 3/4 - 2")
