@@ -132,12 +132,13 @@ class Base:
 
     @staticmethod
     def draw(list_rectangles, list_squares):
-        """Draw the shapes in `list_rectangles` and `list_squares` using the `turtle` module"""
+        """Draw the shapes in `list_rectangles` and \
+            `list_squares` using the `turtle` module"""
         turtle.Screen().colormode(255)
         turtle.Screen().bgcolor(255, 255, 255)
         turtle.Screen().title("Draw  Rectangles and Squares")
         turtle.Screen().setup(width=800, height=600)
-        
+
         for a_shape in list_rectangles + list_squares:
             my_turtle = turtle.Turtle()
             my_turtle.pensize(3)
