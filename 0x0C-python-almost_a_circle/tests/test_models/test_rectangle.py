@@ -1,12 +1,31 @@
 #!/usr/bin/python3
 
 """Module containing test cases for the Rectangle class"""
+from models.base import Base
 from models.rectangle import Rectangle
 import unittest
 
 
 class TestRectangle(unittest.TestCase):
     """Rectangle test cases"""
+
+    @classmethod
+    def setUpClass(cls):
+        """Set up class"""
+        Base._Base__nb_objects = 0
+
+    @classmethod
+    def tearDownClass(cls):
+        """Tear down class"""
+        pass
+
+    def setUp(self):
+        """Set up"""
+        pass
+
+    def tearDown(self):
+        """Tear down"""
+        pass
         
     def test_rectangle__id(self):
         """Test that id is set correctly"""

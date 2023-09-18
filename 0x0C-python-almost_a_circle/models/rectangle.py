@@ -179,7 +179,7 @@ class Rectangle(Base):
             Args:
                 *args () : list of properties of the rectangle
         """
-        if args:
+        if args or (args and kwargs):
             for index, argument in enumerate(args):
                 if index == 0:
                     self.id = argument

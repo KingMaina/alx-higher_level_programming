@@ -44,7 +44,7 @@ class Square(Rectangle):
 
     def update(self, *args, **kwargs):
         """Update properties of the square"""
-        if args:
+        if args or (args and kwargs):
             for index, argument in enumerate(args):
                 if index == 0:
                     self.id = argument
