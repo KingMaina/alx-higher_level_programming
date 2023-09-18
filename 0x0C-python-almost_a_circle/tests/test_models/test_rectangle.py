@@ -211,3 +211,21 @@ class TestRectangle(unittest.TestCase):
         Rectangle.save_to_file([])
         with open("Rectangle.json", "r") as file:
             self.assertEqual(Rectangle.from_json_string(file.read()), [])
+
+    def test_rectangle_load_from_csv(self):
+        """Test that load_from_file returns the correct list of instances"""
+        self.new_rectangle = Rectangle(2, 3)
+        self.new_rectangle2 = Rectangle(4, 5)
+        Rectangle.save_to_file_csv([self.new_rectangle, self.new_rectangle2])
+        self.assertIsInstance(Rectangle.load_from_file_csv()[0], Rectangle)
+        self.assertIsInstance(Rectangle.load_from_file_csv()[1], Rectangle)
+        self.assertEqual(Rectangle.load_from_file_csv()[0].__str__(), "[Rectangle] (1) 0/0 - 2/3")
+        self.assertEqual(Rectangle.load_from_file_csv()[1].__str__(), "[Rectangle] (2) 0/0 - 4/5")
+
+    def test_rectangle_save_to_csv(self):
+        """Test that save_to_file saves the correct JSON string to file"""
+        self.new_rectangle = Rectangle(2, 3)
+        self.new_rectangle2 = Rectangle(4, 5)
+        Rectangle.save_to_file_csv([self.new_rectangle, self.new_rectangle2])
+        with open("Rectangle.csv", "r") as file:
+            self.assertEqual(file.read(), "1,2,3,0,0\n2,4,5,0,0\n")

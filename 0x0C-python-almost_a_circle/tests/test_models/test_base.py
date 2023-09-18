@@ -80,4 +80,16 @@ class TestBase(unittest.TestCase):
         Rectangle.save_to_file([self.new_rectangle, self.new_rectangle2])
         self.assertIsInstance(Rectangle.load_from_file()[0], Rectangle)
 
+    def test_base_save_to_csv_file(self):
+        """Test that save_to_file_csv saves to correct file"""
+        self.new_rectangle = Rectangle(2, 3)
+        self.new_rectangle2 = Rectangle(4, 5)
+        Rectangle.save_to_file_csv([self.new_rectangle, self.new_rectangle2])
+        self.assertIsInstance(Rectangle.load_from_file_csv()[0], Rectangle)
 
+    def test_base_load_from_csv_file(self):
+        """Test that load_from_file_csv returns the correct list of instances"""
+        self.new_rectangle = Rectangle(2, 3)
+        self.new_rectangle2 = Rectangle(4, 5)
+        Rectangle.save_to_file_csv([self.new_rectangle, self.new_rectangle2])
+        self.assertIsInstance(Rectangle.load_from_file_csv()[0], Rectangle)

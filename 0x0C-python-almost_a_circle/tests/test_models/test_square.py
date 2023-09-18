@@ -183,3 +183,17 @@ class TestSquare(unittest.TestCase):
         self.new_square_dict = {"id": 1, "size": 2, "x": 3, "y": 4}
         self.assertIsInstance(Square.create(**self.new_square_dict), Square)
         self.assertEqual(Square.create(**self.new_square_dict).__str__(), "[Square] (1) 3/4 - 2")
+
+    def test_square_load_from_file_csv(self):
+        """Test that load_from_file_csv returns the correct list of instances"""
+        self.new_square = Square(2, 3, 4, 50)
+        self.new_square2 = Square(4, 5, 6, 60)
+        Square.save_to_file_csv([self.new_square, self.new_square2])
+        self.assertIsInstance(Square.load_from_file_csv()[0], Square)
+
+    def test_square_save_to_file_csv(self):
+        """Test that save_to_file_csv saves to correct file"""
+        self.new_square = Square(2, 3, 4, 50)
+        self.new_square2 = Square(4, 5, 6, 60)
+        Square.save_to_file_csv([self.new_square, self.new_square2])
+        self.assertIsInstance(Square.load_from_file_csv()[0], Square)

@@ -3,6 +3,7 @@
 """A module containing a Base class"""
 import json
 import csv
+import turtle
 
 
 class Base:
@@ -97,13 +98,16 @@ class Base:
         """
         if list_objs is None:
             return
-        with open("{}.csv".format(cls.__name__), mode="w", encoding="utf-8") as file:
+        with open("{}.csv".format(cls.__name__),
+                  mode="w", encoding="utf-8") as file:
             writer = csv.writer(file)
             for obj in list_objs:
                 if cls.__name__ == "Rectangle":
-                    writer.writerow([obj.id, obj.width, obj.height, obj.x, obj.y])
+                    writer.writerow(
+                        [obj.id, obj.width, obj.height, obj.x, obj.y])
                 elif cls.__name__ == "Square":
-                    writer.writerow([obj.id, obj.size, obj.x, obj.y])
+                    writer.writerow(
+                        [obj.id, obj.size, obj.x, obj.y])
 
     @classmethod
     def load_from_file_csv(cls):
@@ -125,3 +129,33 @@ class Base:
                 return instances
         except FileNotFoundError:
             return instances
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Draw the shapes in `list_rectangles` and `list_squares` using the `turtle` module"""
+        turtle.Screen().colormode(255)
+        turtle.Screen().bgcolor(255, 255, 255)
+        turtle.Screen().title("Draw  Rectangles and Squares")
+        turtle.Screen().setup(width=800, height=600)
+        
+        for a_shape in list_rectangles + list_squares:
+            my_turtle = turtle.Turtle()
+            my_turtle.pensize(3)
+            my_turtle.shape("turtle")
+            my_turtle.color("black")
+            my_turtle.speed(1)
+            my_turtle.penup()
+            my_turtle.pendown()
+            my_turtle.setpos(a_shape.x, a_shape.y)
+            my_turtle.forward(a_shape.width)
+            my_turtle.left(90)
+            my_turtle.pendown()
+            my_turtle.forward(a_shape.height)
+            my_turtle.left(90)
+            my_turtle.forward(a_shape.width)
+            my_turtle.left(90)
+            my_turtle.forward(a_shape.height)
+            my_turtle.left(90)
+            my_turtle.penup()
+            my_turtle.hideturtle()
+        turtle.done()
