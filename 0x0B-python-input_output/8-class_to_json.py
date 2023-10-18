@@ -20,7 +20,7 @@ def class_to_json(obj):
             elif isinstance(value, list):
                 new_list = []
                 for item in value:
-                    if isinstance(item, int, str, bool):
+                    if isinstance(item, (int, str, bool)):
                         new_list.append(item)
                 new_dict[key] = new_list
             elif isinstance(value, dict):

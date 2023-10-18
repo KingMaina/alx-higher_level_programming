@@ -6,6 +6,9 @@ class MyClass():
 
 mc = MyClass()
 add_attribute(mc, "name", "John")
+add_attribute(mc, "age", 30)
+add_attribute(mc, "gender", "Male")
+print(mc.__dict__)
 print(mc.name)
 
 try:
