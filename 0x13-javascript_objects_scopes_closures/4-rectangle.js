@@ -18,7 +18,7 @@ class Rectangle {
       }
       if (row !== this.height - 1) shape += '\n';
     }
-    console.log(shape);
+    if (shape.length > 0) console.log(shape);
   }
 
   rotate () {
