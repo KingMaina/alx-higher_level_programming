@@ -21,10 +21,6 @@ if __name__ == "__main__":
     state = metadata.tables['states']
     city = metadata.tables['cities']
     query = session.query(state, city).join(city).all()
-    states_list = []
     for s in query:
-        if s[1] not in states_list:
-            print('{}: {}'.format(s[0], s[1]))
-            states_list.append(s[1])
-        print('\t{}: {}'.format(s[2], s[4]))
+        print('{}: {} -> {}'.format(s[2], s[4], s[1]))
     session.close()

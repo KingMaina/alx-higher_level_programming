@@ -10,8 +10,8 @@ from sqlalchemy.exc import SQLAlchemyError
 from model_state import Base, State
 
 
-if __name__ == "__name__":
-    db_uri = 'mysql+mysqldb://{}:{}@localhost/{}'.format(
+if __name__ == "__main__":
+    db_uri = 'mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
         argv[1], argv[2], argv[3]
     )
     engine = create_engine(db_uri, pool_pre_ping=True)
