@@ -10,17 +10,17 @@ if __name__ == '__main__':
 
     REPO = argv[1]
     OWNER = argv[2]
-    URL = 'https://api.github.com/repos/{}/{}/commits'.format(REPO, OWNER)
+    URL = 'https://api.github.com/repos/{}/{}/is'.format(REPO, OWNER)
     headers = {
         'accept': 'application/vnd.github+json',
         'X-GitHub-Api-Version': '2022-11-28'
     }
     commits = requests.get(URL, headers=headers).json()
     try:
-        for commit in range(10):
+        for i in range(10):
             print('{}: {}'.format(
-                            commits[commit].get('sha'),
-                            commits[commit].get('commit').get('author').get('name')
+                            commits[i].get('sha'),
+                            commits[i].get('commit').get('author').get('name')
                 )
             )
     except IndexError:
