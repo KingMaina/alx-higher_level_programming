@@ -11,11 +11,11 @@ if __name__ == '__main__':
     import requests
 
     URL = 'http://0.0.0.0:5000/search_user'
-    letter = argv[1] if len(argv) > 1 else ''
-    response = requests.post(URL, data={'q': letter})
+    letter = "" if len(argv) == 1 else argv[1]
+    response = requests.post(URL, data={"q": letter})
     try:
         result = response.json()
-        if not result:
+        if result == {}:
             print('No result')
         else:
             print('[{}] {}'.format(result.get('id'), result.get('name')))
