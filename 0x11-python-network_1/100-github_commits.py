@@ -16,9 +16,12 @@ if __name__ == '__main__':
         'X-GitHub-Api-Version': '2022-11-28'
     }
     commits = requests.get(URL, headers=headers).json()
-    for commit in range(10):
-        print('{}: {}'.format(
-                        commits[commit].get('sha'),
-                        commits[commit].get('commit').get('author').get('name')
+    try:
+        for commit in range(10):
+            print('{}: {}'.format(
+                            commits[commit].get('sha'),
+                            commits[commit].get('commit').get('author').get('name')
+                )
             )
-        )
+    except IndexError:
+        pass

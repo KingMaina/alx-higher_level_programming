@@ -9,6 +9,7 @@
 if __name__ == '__main__':
     from sys import argv
     import requests
+    from requests.exceptions import JSONDecodeError
 
     URL = 'http://0.0.0.0:5000/search_user'
     letter = "" if len(argv) == 1 else argv[1]
