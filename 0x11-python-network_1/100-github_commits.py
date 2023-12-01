@@ -10,7 +10,7 @@ if __name__ == '__main__':
 
     REPO = argv[1]
     OWNER = argv[2]
-    URL = 'https://api.github.com/repos/{}/{}/commits'.format(REPO, OWNER)
+    URL = 'https://api.github.com/repos/{}/{}/commits'.format(OWNER, REPO)
     commits = requests.get(URL).json()
     try:
         for i in range(10):
